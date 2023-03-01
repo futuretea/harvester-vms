@@ -8,6 +8,7 @@ variable "kubeconfig_path" {
 variable "kubecontext" {
   type        = string
   description = "Name of the kubernetes context to use to the Harvester cluster"
+  default     =  ""
 }
 
 variable "prefix" {
@@ -36,7 +37,6 @@ variable "disk_size" {
 variable "namespace" {
   type        = string
   description = "Harvester namespace to deploy the VMs into"
-  default     = "default"
 }
 
 variable "user_name" {

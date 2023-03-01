@@ -42,9 +42,6 @@ resource "harvester_virtualmachine" "rancher_server" {
   cpu    = var.cpu_count
   memory = var.memory_size
 
-  efi         = true
-  secure_boot = true
-
   run_strategy = "RerunOnFailure"
   hostname     = "${var.prefix}-rancher-server"
   machine_type = "q35"
