@@ -49,15 +49,16 @@ Both instances will be accessible over SSH using the SSH keys `id_rsa` and `id_r
 | <a name="input_memory_size"></a> [memory_size](#memory\_size) | Memory size of the rancher server VM | `string` | `"8Gi"` | no |
 | <a name="input_disk_size"></a> [disk_size](#disk\_size) | Disk size of the rancher server VM | `string` | `"20Gi"` | no |
 | <a name="input_namespace"></a> [namespace](#namespace) | Harvester namespace to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_user_name"></a> [user\_name](#user\_name) | Name of the SSH user | `string` | n/a | yes |
+| <a name="input_ssh_username"></a> [ssh\_username](#ssh\_username) | Name of the SSH user | `string` | n/a | yes |
+| <a name="input_ssh_password"></a> [ssh\_password](#ssh\_password) | Password of the SSH user | `string` | "" | no |
 | <a name="input_image_namespace"></a> [image\_namespace](#image\_namespace) | Namespace of the Harvester image to deploy the VMs into | `string` | n/a | yes |
 | <a name="input_image_name"></a> [image\_name](#image\_name) | Name of the Harvester image to deploy the VMs into | `string` | n/a | yes |
 | <a name="input_network_namespace"></a> [network\_namespace](#network\_namespace) | Namespace of the Harvester network to deploy the VMs into | `string` | n/a | yes |
 | <a name="input_network_name"></a> [network\_name](#network\_name) | Name of the Harvester network to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_rancher_server_admin_password"></a> [rancher\_server\_admin\_password](#input\_rancher\_server\_admin\_password) | Admin password to use for Rancher server bootstrap, min. 12 characters | `string` | n/a | yes |
+| <a name="input_admin_password"></a> [admin\_password](#input\_admin\_password) | Admin password to use for Rancher server bootstrap, min. 12 characters | `string` | n/a | yes |
 | <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | Version of cert-manager to install alongside Rancher (format: 0.0.0) | `string` | `"1.10.0"` | no |
-| <a name="input_rancher_kubernetes_version"></a> [rancher\_kubernetes\_version](#input\_rancher\_kubernetes\_version) | Kubernetes version to use for Rancher server cluster | `string` | `"v1.23.14+k3s1"` | no |
-| <a name="input_rancher_version"></a> [rancher\_version](#input\_rancher\_version) | Rancher server version (format: v0.0.0) | `string` | `"2.7.0"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Kubernetes version to use for Rancher server cluster | `string` | `"v1.23.14+k3s1"` | no |
+| <a name="input_version"></a> [_version](#input\_version) | Rancher server version (format: v0.0.0) | `string` | `"2.7.0"` | no |
 
 ## Outputs
 

@@ -24,7 +24,7 @@ node_internal_ip = ""
 rancher_helm_repository = "https://releases.rancher.com/server-charts/latest"
 
 # Kubernetes version to use for Rancher server cluster
-rancher_kubernetes_version = "v1.24.7+k3s1"
+kubernetes_version = "v1.24.7+k3s1"
 
 # Rancher server version (format v0.0.0)
-rancher_version = "2.6.9"
+version = "2.6.10"

@@ -39,9 +39,15 @@ variable "namespace" {
   description = "Harvester namespace to deploy the VMs into"
 }
 
-variable "user_name" {
+variable "ssh_username" {
   type        = string
-  description = "Name of the user"
+  description = "Name of the ssh user"
+}
+
+variable "ssh_password" {
+  type        = string
+  description = "Password of the ssh user"
+  default = ""
 }
 
 variable "image_namespace" {
@@ -64,7 +70,7 @@ variable "network_name" {
   description = "Name of the Harvester network to deploy the VMs into"
 }
 
-variable "rancher_kubernetes_version" {
+variable "kubernetes_version" {
   type        = string
   description = "Kubernetes version to use for Rancher server cluster"
   default     = "v1.24.7+k3s1"
@@ -76,13 +82,13 @@ variable "cert_manager_version" {
   default     = "1.10.1"
 }
 
-variable "rancher_version" {
+variable "version" {
   type        = string
   description = "Rancher server version (format: v0.0.0)"
-  default     = "2.6.9"
+  default     = "2.6.10"
 }
 
-variable "rancher_server_admin_password" {
+variable "admin_password" {
   type        = string
   description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
 }

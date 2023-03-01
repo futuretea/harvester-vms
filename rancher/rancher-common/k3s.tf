@@ -3,7 +3,7 @@
 resource "ssh_resource" "install_k3s" {
   host = var.node_public_ip
   commands = [
-    "bash -c 'curl https://get.k3s.io | INSTALL_K3S_EXEC=\"server --node-external-ip ${var.node_public_ip} --node-ip ${var.node_internal_ip}\" INSTALL_K3S_VERSION=${var.rancher_kubernetes_version} sh -'"
+    "bash -c 'curl https://get.k3s.io | INSTALL_K3S_EXEC=\"server --node-external-ip ${var.node_public_ip} --node-ip ${var.node_internal_ip}\" INSTALL_K3S_VERSION=${var.kubernetes_version} sh -'"
   ]
   user        = var.node_username
   private_key = var.ssh_private_key_pem

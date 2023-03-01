@@ -94,7 +94,7 @@ resource "harvester_virtualmachine" "rancher_server" {
     connection {
       type        = "ssh"
       host        = self.network_interface[0].ip_address
-      user        = var.user_name
+      user        = var.ssh_username
       private_key = tls_private_key.global_key.private_key_pem
     }
   }
@@ -106,13 +106,13 @@ module "rancher_common" {
 
   node_public_ip             = harvester_virtualmachine.rancher_server.network_interface[0].ip_address
   node_internal_ip           = harvester_virtualmachine.rancher_server.network_interface[0].ip_address
-  node_username              = var.user_name
+  node_username              = var.ssh_username
   ssh_private_key_pem        = tls_private_key.global_key.private_key_pem
-  rancher_kubernetes_version = var.rancher_kubernetes_version
+  kubernetes_version = var.kubernetes_version
 
   cert_manager_version = var.cert_manager_version
-  rancher_version      = var.rancher_version
+  version      = var.version
 
   rancher_server_dns = join(".", ["rancher", harvester_virtualmachine.rancher_server.network_interface[0].ip_address, "sslip.io"])
-  admin_password     = var.rancher_server_admin_password
+  admin_password     = var.admin_password
 }

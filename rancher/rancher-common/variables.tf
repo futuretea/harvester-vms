@@ -24,7 +24,7 @@ variable "ssh_private_key_pem" {
   description = "Private key used for SSH access to the Rancher server cluster node"
 }
 
-variable "rancher_kubernetes_version" {
+variable "kubernetes_version" {
   type        = string
   description = "Kubernetes version to use for Rancher server cluster"
   default     = "v1.24.7+k3s1"
@@ -36,10 +36,10 @@ variable "cert_manager_version" {
   default     = "1.10.1"
 }
 
-variable "rancher_version" {
+variable "version" {
   type        = string
   description = "Rancher server version (format v0.0.0)"
-  default     = "2.6.9"
+  default     = "2.6.10"
 }
 
 # Required
