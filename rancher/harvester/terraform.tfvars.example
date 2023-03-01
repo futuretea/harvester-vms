@@ -1,6 +1,6 @@
 
 # Kubeconfig file path to connect to the Harvester cluster
-kubeconfig_path = ""
+kubeconfig_path = "/tmp/secret/kubeconfig"
 
 # Name of the kubernetes context to use to the Harvester cluster
 kubecontext = ""
@@ -21,28 +21,28 @@ disk_size = "20Gi"
 namespace = "default"
 
 # Name of the SSH user
-user_name = ""
+user_name = "ubuntu"
 
 # Namespace of the Harvester image to deploy the VMs into
-image_namespace = ""
+image_namespace = "harvester-public"
 
 # Name of the Harvester image to deploy the VMs into
-image_name = ""
+image_name = "image-52chq"
 
 # Namespace of the Harvester network to deploy the VMs into
-network_namespace = ""
+network_namespace = "harvester-public"
 
 # Name of the Harvester network to deploy the VMs into
-network_name = ""
+network_name = "vlan1"
 
 # Admin password to use for Rancher server bootstrap, min. 12 characters
 rancher_server_admin_password = ""
 
 # Version of cert-manager to install alongside Rancher (format: 0.0.0)
-cert_manager_version = "1.10.0"
+cert_manager_version = "1.10.1"
 
 # Kubernetes version to use for Rancher server cluster
-rancher_kubernetes_version = "v1.23.14+k3s1"
+rancher_kubernetes_version = "v1.24.7+k3s1"
 
 # Rancher server version (format: v0.0.0)
-rancher_version = "2.7.0"
+rancher_version = "2.6.9"

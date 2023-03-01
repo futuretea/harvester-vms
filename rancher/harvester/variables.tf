@@ -67,19 +67,19 @@ variable "network_name" {
 variable "rancher_kubernetes_version" {
   type        = string
   description = "Kubernetes version to use for Rancher server cluster"
-  default     = "v1.23.14+k3s1"
+  default     = "v1.24.7+k3s1"
 }
 
 variable "cert_manager_version" {
   type        = string
   description = "Version of cert-manager to install alongside Rancher (format: 0.0.0)"
-  default     = "1.10.0"
+  default     = "1.10.1"
 }
 
 variable "rancher_version" {
   type        = string
   description = "Rancher server version (format: v0.0.0)"
-  default     = "2.7.0"
+  default     = "2.6.9"
 }
 
 variable "rancher_server_admin_password" {

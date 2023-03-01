@@ -12,6 +12,26 @@ resource "helm_release" "cert_manager" {
     name  = "installCRDs"
     value = "true"
   }
+
+  set {
+    name  = "image.repository"
+    value = "cnrancher/mirrored-jetstack-cert-manager-controller"
+  }
+
+  set {
+    name  = "webhook.image.repository"
+    value = "cnrancher/mirrored-jetstack-cert-manager-webhook"
+  }
+
+  set {
+    name  = "cainjector.image.repository"
+    value = "cnrancher/mirrored-jetstack-cert-manager-cainjector"
+  }
+
+  set {
+    name  = "startupapicheck.image.repository"
+    value = "cnrancher/mirrored-jetstack-cert-manager-ctl"
+  }
 }
 
 # Install Rancher helm chart
