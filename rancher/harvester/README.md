@@ -45,6 +45,9 @@ Both instances will be accessible over SSH using the SSH keys `id_rsa` and `id_r
 | <a name="input_kubeconfig_path"></a> [kubeconfig\_path](#kubeconfig\_path) | Kubeconfig file path to connect to the Harvester cluster | `string` | n/a | yes |
 | <a name="input_kubecontexth"></a> [kubecontext](#kubecontext) | Name of the kubernetes context to use to the Harvester cluster | `string` | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | Prefix added to names of all resources | `string` | n/a | yes |
+| <a name="input_cpu_count"></a> [cpu_count](#cpu\_count) | CPU count of the rancher server VM | `number` | 4 | yes |
+| <a name="input_memory_size"></a> [memory_size](#memory\_size) | Memory size of the rancher server VM | `string` | 8Gi | yes |
+| <a name="input_disk_size"></a> [disk_size](#disk\_size) | Disk size of the rancher server VM | `string` | 20Gi | yes |
 | <a name="input_namespace"></a> [namespace](#namespace) | Harvester namespace to deploy the VMs into | `string` | default | yes |
 | <a name="input_user_name"></a> [user\_name](#user\_name) | Name of the SSH user | `string` | n/a | yes |
 | <a name="input_image_namespace"></a> [image\_namespace](#image\_namespace) | Namespace of the Harvester image to deploy the VMs into | `string` | n/a | yes |

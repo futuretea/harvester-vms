@@ -15,6 +15,24 @@ variable "prefix" {
   description = "Prefix added to names of all resources"
 }
 
+variable "cpu_count" {
+  type        =  number
+  description = "CPU count of the rancher server VM"
+  default     = 4
+}
+
+variable "memory_size" {
+  type        =  string
+  description = "Memory size of the rancher server VM"
+  default     = "8Gi"
+}
+
+variable "disk_size" {
+  type        =  string
+  description = "Disk size of the rancher server VM"
+  default     = "10Gi"
+}
+
 variable "namespace" {
   type        = string
   description = "Harvester namespace to deploy the VMs into"

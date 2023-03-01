@@ -8,6 +8,15 @@ kubecontext = ""
 # Prefix added to names of all resources
 prefix = "rancher-test"
 
+# CPU count of the rancher server VM
+cpu_count = 4
+
+# Memory size of the rancher server VM
+memory_size = "8Gi"
+
+# Disk size of the rancher server VM
+disk_size = "20Gi"
+
 # Harvester namespace to deploy the VMs into
 namespace = "default"
 

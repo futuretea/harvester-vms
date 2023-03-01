@@ -39,8 +39,8 @@ resource "harvester_virtualmachine" "rancher_server" {
 
   description = "Rancher server"
 
-  cpu    = 2
-  memory = "4Gi"
+  cpu    = var.cpu_count
+  memory = var.memory_size
 
   efi         = true
   secure_boot = true
@@ -62,7 +62,7 @@ resource "harvester_virtualmachine" "rancher_server" {
   disk {
     name       = "rootdisk"
     type       = "disk"
-    size       = "10Gi"
+    size       = var.disk_size
     bus        = "virtio"
     boot_order = 1
 
