@@ -6,7 +6,7 @@ kubeconfig_path = ""
 kubecontext = ""
 
 # Prefix added to names of all resources
-prefix = "quickstart"
+prefix = "rancher-test"
 
 # Harvester namespace to deploy the VMs into
 namespace = "default"
