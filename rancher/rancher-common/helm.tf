@@ -8,31 +8,32 @@ resource "helm_release" "cert_manager" {
   create_namespace = true
   wait             = true
   wait_for_jobs    = true
+  timeout = 600
 
   set {
     name  = "installCRDs"
     value = "true"
   }
 
-  set {
-    name  = "image.repository"
-    value = "cnrancher/mirrored-jetstack-cert-manager-controller"
-  }
+  # set {
+  #   name  = "image.repository"
+  #   value = "cnrancher/mirrored-jetstack-cert-manager-controller"
+  # }
 
-  set {
-    name  = "webhook.image.repository"
-    value = "cnrancher/mirrored-jetstack-cert-manager-webhook"
-  }
+  # set {
+  #   name  = "webhook.image.repository"
+  #   value = "cnrancher/mirrored-jetstack-cert-manager-webhook"
+  # }
 
-  set {
-    name  = "cainjector.image.repository"
-    value = "cnrancher/mirrored-jetstack-cert-manager-cainjector"
-  }
+  # set {
+  #   name  = "cainjector.image.repository"
+  #   value = "cnrancher/mirrored-jetstack-cert-manager-cainjector"
+  # }
 
-  set {
-    name  = "startupapicheck.image.repository"
-    value = "cnrancher/mirrored-jetstack-cert-manager-ctl"
-  }
+  # set {
+  #   name  = "startupapicheck.image.repository"
+  #   value = "cnrancher/mirrored-jetstack-cert-manager-ctl"
+  # }
 }
 
 # Install Rancher helm chart
@@ -47,6 +48,7 @@ resource "helm_release" "rancher_server" {
   create_namespace = true
   wait             = true
   wait_for_jobs    = true
+  timeout = 600
 
   set {
     name  = "hostname"
