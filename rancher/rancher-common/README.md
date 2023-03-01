@@ -54,7 +54,7 @@ No modules.
 | <a name="input_node_internal_ip"></a> [node\_internal\_ip](#input\_node\_internal\_ip) | Internal IP of compute node for Rancher cluster | `string` | `""` | no |
 | <a name="input_rancher_helm_repository"></a> [rancher\_helm\_repository](#input\_rancher\_helm\_repository) | The helm repository, where the Rancher helm chart is installed from | `string` | `"https://releases.rancher.com/server-charts/latest"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Kubernetes version to use for Rancher server cluster | `string` | `"v1.24.7+k3s1"` | no |
-| <a name="input_version"></a> [_version](#input\_version) | Rancher server version (format v0.0.0) | `string` | `"2.6.10"` | no |
+| <a name="input_rancher_version"></a> [rancher\_version](#input\_rancher\version) | Rancher server version (format v0.0.0) | `string` | `"2.6.10"` | no |
 
 ## Outputs
 

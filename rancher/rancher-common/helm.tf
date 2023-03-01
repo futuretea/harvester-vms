@@ -41,7 +41,7 @@ resource "helm_release" "rancher_server" {
   ]
 
   name             = "rancher"
-  chart            = "${var.rancher_helm_repository}/rancher-${var.version}.tgz"
+  chart            = "${var.rancher_helm_repository}/rancher-${var.rancher_version}.tgz"
   namespace        = "cattle-system"
   create_namespace = true
   wait             = true

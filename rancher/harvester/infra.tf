@@ -111,7 +111,7 @@ module "rancher_common" {
   kubernetes_version = var.kubernetes_version
 
   cert_manager_version = var.cert_manager_version
-  version      = var.version
+  rancher_version      = var.rancher_version
 
   rancher_server_dns = join(".", ["rancher", harvester_virtualmachine.rancher_server.network_interface[0].ip_address, "sslip.io"])
   admin_password     = var.admin_password

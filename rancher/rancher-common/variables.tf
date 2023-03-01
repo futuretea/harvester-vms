@@ -36,7 +36,7 @@ variable "cert_manager_version" {
   default     = "1.10.1"
 }
 
-variable "version" {
+variable "rancher_version" {
   type        = string
   description = "Rancher server version (format v0.0.0)"
   default     = "2.6.10"

@@ -27,4 +27,4 @@ rancher_helm_repository = "https://releases.rancher.com/server-charts/latest"
 kubernetes_version = "v1.24.7+k3s1"
 
 # Rancher server version (format v0.0.0)
-version = "2.6.10"
+rancher_version = "2.6.10"
