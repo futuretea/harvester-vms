@@ -8,7 +8,7 @@ resource "helm_release" "cert_manager" {
   create_namespace = true
   wait             = true
   wait_for_jobs    = true
-  timeout = 600
+  timeout = 1200
 
   set {
     name  = "installCRDs"
@@ -48,7 +48,7 @@ resource "helm_release" "rancher_server" {
   create_namespace = true
   wait             = true
   wait_for_jobs    = true
-  timeout = 600
+  timeout = 1200
 
   set {
     name  = "hostname"
