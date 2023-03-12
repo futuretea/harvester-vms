@@ -1,30 +1,30 @@
-
-# Admin password to use for Rancher server bootstrap, min. 12 characters
-admin_password = ""
-
 # Public IP of compute node for Rancher cluster
 node_public_ip = ""
-
-# Username used for SSH access to the Rancher server cluster node
-node_username = ""
-
-# DNS host name of the Rancher server
-rancher_server_dns = ""
-
-# Private key used for SSH access to the Rancher server cluster node
-ssh_private_key_pem = ""
-
-# Version of cert-manager to install alongside Rancher (format: 0.0.0)
-cert_manager_version = "1.10.1"
 
 # Internal IP of compute node for Rancher cluster
 node_internal_ip = ""
 
-# The helm repository, where the Rancher helm chart is installed from
-rancher_helm_repository = "https://releases.rancher.com/server-charts/latest"
+# Username used for SSH access to the Rancher server cluster node
+node_username = ""
+
+# Private key used for SSH access to the Rancher server cluster node
+ssh_private_key_pem = ""
 
 # Kubernetes version to use for Rancher server cluster
 kubernetes_version = "v1.24.7+k3s1"
 
-# Rancher server version (format v0.0.0)
+# Directory where generated files will be stored
+generated_files_dir = "."
+
+# Version of cert-manager to install alongside Rancher (format: 0.0.0)
+cert_manager_version = "1.10.1"
+
+# Rancher server version (format 0.0.0)
 rancher_version = "2.6.10"
+
+# The helm repository, where the Rancher helm chart is installed from
+rancher_helm_repository = "https://releases.rancher.com/server-charts/latest"
+
+# DNS host name of the Rancher server
+rancher_server_dns = ""
+

@@ -24,3 +24,6 @@ vagrant/local_config.yaml
 
 # Terraform plan files
 *.tfplan
+
+.idea
+.vscode

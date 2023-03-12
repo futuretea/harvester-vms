@@ -1,6 +1,6 @@
-# Variables for DO infrastructure module
+# Variables for Harvester module
 
-variable "kubeconfig_path" {
+variable "kubeconfig" {
   type        = string
   description = "Kubeconfig file path to connect to the Harvester cluster"
 }
@@ -74,6 +74,12 @@ variable "kubernetes_version" {
   type        = string
   description = "Kubernetes version to use for Rancher server cluster"
   default     = "v1.24.7+k3s1"
+}
+
+variable "generated_files_dir" {
+  type        = string
+  description = "Directory where the generated kubernetes config file will be stored"
+  default     = "."
 }
 
 variable "cert_manager_version" {

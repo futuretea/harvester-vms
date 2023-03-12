@@ -1,4 +1,4 @@
-# Variables for rancher common module
+# Variables for rancher module
 
 # Required
 variable "node_public_ip" {
@@ -30,6 +30,12 @@ variable "kubernetes_version" {
   default     = "v1.24.7+k3s1"
 }
 
+variable "generated_files_dir" {
+  type        = string
+  description = "Directory where the generated kubernetes config file will be stored"
+  default     = "."
+}
+
 variable "cert_manager_version" {
   type        = string
   description = "Version of cert-manager to install alongside Rancher (format: 0.0.0)"
@@ -42,6 +48,12 @@ variable "rancher_version" {
   default     = "2.6.10"
 }
 
+variable "rancher_helm_repository" {
+  type        = string
+  description = "The helm repository, where the Rancher helm chart is installed from"
+  default     = "https://releases.rancher.com/server-charts/latest"
+}
+
 # Required
 variable "rancher_server_dns" {
   type        = string
@@ -52,10 +64,4 @@ variable "rancher_server_dns" {
 variable "admin_password" {
   type        = string
   description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
-}
-
-variable "rancher_helm_repository" {
-  type        = string
-  description = "The helm repository, where the Rancher helm chart is installed from"
-  default     = "https://releases.rancher.com/server-charts/latest"
 }

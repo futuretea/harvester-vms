@@ -1,6 +1,6 @@
 
 output "rancher_server_url" {
-  value = module.rancher_common.rancher_url
+  value = module.rancher.rancher_url
 }
 
 output "rancher_node_ip" {
