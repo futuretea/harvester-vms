@@ -1,27 +1,4 @@
 # Harvester infrastructure resources
-
-resource "tls_private_key" "global_key" {
-  algorithm = "RSA"
-  rsa_bits  = 2048
-}
-
-resource "local_sensitive_file" "ssh_private_key_pem" {
-  filename        = "${path.module}/id_rsa"
-  content         = tls_private_key.global_key.private_key_pem
-  file_permission = "0600"
-}
-
-resource "local_file" "ssh_public_key_openssh" {
-  filename = "${path.module}/id_rsa.pub"
-  content  = tls_private_key.global_key.public_key_openssh
-}
-
-# Temporary key pair used for SSH accesss
-resource "harvester_ssh_key" "vm_ssh_key" {
-  name       = "${var.prefix}-vm-ssh-key"
-  public_key = trimspace(tls_private_key.global_key.public_key_openssh)
-}
-
 data "harvester_image" "rancher" {
   name      = var.image_name
   namespace = var.image_namespace
@@ -100,19 +77,19 @@ resource "harvester_virtualmachine" "rancher_server" {
   }
 }
 
-# Rancher resources
-module "rancher_common" {
-  source = "../rancher-common"
+# Install Rancher
+module "rancher" {
+  source = "../rancher"
 
   node_public_ip             = harvester_virtualmachine.rancher_server.network_interface[0].ip_address
   node_internal_ip           = harvester_virtualmachine.rancher_server.network_interface[0].ip_address
-  node_username              = var.ssh_username
   ssh_private_key_pem        = tls_private_key.global_key.private_key_pem
-  kubernetes_version = var.kubernetes_version
+  node_username              = var.ssh_username
+  kubernetes_version         = var.kubernetes_version
+  generated_files_dir = var.generated_files_dir
 
   cert_manager_version = var.cert_manager_version
   rancher_version      = var.rancher_version
-
-  rancher_server_dns = join(".", ["rancher", harvester_virtualmachine.rancher_server.network_interface[0].ip_address, "sslip.io"])
   admin_password     = var.admin_password
+  rancher_server_dns = join(".", ["rancher", harvester_virtualmachine.rancher_server.network_interface[0].ip_address, "sslip.io"])
 }

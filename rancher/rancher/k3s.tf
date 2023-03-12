@@ -13,10 +13,16 @@ resource "ssh_resource" "retrieve_config" {
   depends_on = [
     ssh_resource.install_k3s
   ]
+
   host = var.node_public_ip
   commands = [
     "sudo sed \"s/127.0.0.1/${var.node_public_ip}/g\" /etc/rancher/k3s/k3s.yaml"
   ]
   user        = var.node_username
   private_key = var.ssh_private_key_pem
+}
+
+resource "local_sensitive_file" "kube_config_server_yaml" {
+  filename = format("%s/%s", var.generated_files_dir, "kube_config_server.yaml")
+  content  = ssh_resource.retrieve_config.result
 }

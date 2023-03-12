@@ -1,4 +1,4 @@
-# Helm resources
+# Rancher server
 
 # Install cert-manager helm chart
 resource "helm_release" "cert_manager" {
@@ -14,26 +14,6 @@ resource "helm_release" "cert_manager" {
     name  = "installCRDs"
     value = "true"
   }
-
-  # set {
-  #   name  = "image.repository"
-  #   value = "cnrancher/mirrored-jetstack-cert-manager-controller"
-  # }
-
-  # set {
-  #   name  = "webhook.image.repository"
-  #   value = "cnrancher/mirrored-jetstack-cert-manager-webhook"
-  # }
-
-  # set {
-  #   name  = "cainjector.image.repository"
-  #   value = "cnrancher/mirrored-jetstack-cert-manager-cainjector"
-  # }
-
-  # set {
-  #   name  = "startupapicheck.image.repository"
-  #   value = "cnrancher/mirrored-jetstack-cert-manager-ctl"
-  # }
 }
 
 # Install Rancher helm chart
@@ -62,6 +42,21 @@ resource "helm_release" "rancher_server" {
 
   set {
     name  = "bootstrapPassword"
-    value = "admin" # TODO: change this once the terraform provider has been updated with the new pw bootstrap logic
+    value = "admin"
   }
+}
+
+# Initialize Rancher server
+resource "rancher2_bootstrap" "admin" {
+  depends_on = [
+    helm_release.rancher_server
+  ]
+
+  provider = rancher2.bootstrap
+
+  initial_password = "admin"
+
+  password  = var.admin_password
+
+  telemetry = true
 }

@@ -6,64 +6,66 @@ Both instances will be accessible over SSH using the SSH keys `id_rsa` and `id_r
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_harvester"></a> [harvester](#requirement\_harvester) | 0.6.1 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | 2.2.3 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | 3.4.0 |
+| Name                                                                         | Version  |
+|------------------------------------------------------------------------------|----------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform)    | >= 1.0.0 |
+| <a name="requirement_harvester"></a> [harvester](#requirement\_harvester)    | 0.6.1    |
+| <a name="requirement_local"></a> [local](#requirement\_local)                | 2.4.0    |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls)                      | 4.0.4    |
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_harvester"></a> [harvester](#provider\_harvester) | 0.6.1 |
-| <a name="provider_local"></a> [local](#provider\_local) | 2.2.3 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.4.0 |
+| Name                                                                   | Version |
+|------------------------------------------------------------------------|---------|
+| <a name="provider_harvester"></a> [harvester](#provider\_harvester)    | 0.6.1   |
+| <a name="provider_local"></a> [local](#provider\_local)                | 2.4.0   |
+| <a name="provider_tls"></a> [tls](#provider\_tls)                      | 4.0.4   |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_rancher_common"></a> [rancher\_common](#module\_rancher\_common) | ../rancher-common | n/a |
+| Name                                                      | Source     | Version |
+|-----------------------------------------------------------|------------|---------|
+| <a name="module_rancher"></a> [rancher](#module\_rancher) | ../rancher | n/a     |
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [harvester_network.rancher](https://registry.terraform.io/providers/harvester/harvester/latest/docs/data-sources/network) | data |
+| Name                                                                                                                                        | Type     |
+|---------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| [local_file.ssh_public_key_openssh](https://registry.terraform.io/providers/hashicorp/local/2.4.0/docs/resources/file)                      | resource |
+| [local_sensitive_file.ssh_private_key_pem](https://registry.terraform.io/providers/hashicorp/local/2.4.0/docs/resources/sensitive_file)     | resource |
+| [tls_private_key.global_key](https://registry.terraform.io/providers/hashicorp/tls/4.0.4/docs/resources/private_key)                        | resource |
+| [harvester_ssh_key.vm_ssh_key](https://registry.terraform.io/providers/harvester/harvester/latest/docs/resources/ssh_key)                   | resource |
 | [harvester_virtualmachine.rancher_server](https://registry.terraform.io/providers/harvester/harvester/latest/docs/resources/virtualmachine) | resource |
-| [harvester_ssh_key.vm_ssh_key](https://registry.terraform.io/providers/harvester/harvester/latest/docs/resources/ssh_key) | resource |
-| [local_file.ssh_public_key_openssh](https://registry.terraform.io/providers/hashicorp/local/2.2.3/docs/resources/file) | resource |
-| [local_sensitive_file.ssh_private_key_pem](https://registry.terraform.io/providers/hashicorp/local/2.2.3/docs/resources/sensitive_file) | resource |
-| [tls_private_key.global_key](https://registry.terraform.io/providers/hashicorp/tls/3.4.0/docs/resources/private_key) | resource |
+| [harvester_image.rancher](https://registry.terraform.io/providers/harvester/harvester/latest/docs/data-sources/image)                       | data     |
+| [harvester_network.rancher](https://registry.terraform.io/providers/harvester/harvester/latest/docs/data-sources/network)                   | data     |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_kubeconfig_path"></a> [kubeconfig\_path](#kubeconfig\_path) | Kubeconfig file path to connect to the Harvester cluster | `string` | n/a | yes |
-| <a name="input_kubecontext"></a> [kubecontext](#kubecontext) | Name of the kubernetes context to use to the Harvester cluster | `string` | "" | no |
-| <a name="input_prefix"></a> [prefix](#input\_prefix) | Prefix added to names of all resources | `string` | n/a | yes |
-| <a name="input_cpu_count"></a> [cpu_count](#cpu\_count) | CPU count of the rancher server VM | `number` | 4 | no |
-| <a name="input_memory_size"></a> [memory_size](#memory\_size) | Memory size of the rancher server VM | `string` | `"8Gi"` | no |
-| <a name="input_disk_size"></a> [disk_size](#disk\_size) | Disk size of the rancher server VM | `string` | `"20Gi"` | no |
-| <a name="input_namespace"></a> [namespace](#namespace) | Harvester namespace to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_ssh_username"></a> [ssh\_username](#ssh\_username) | Name of the SSH user | `string` | n/a | yes |
-| <a name="input_ssh_password"></a> [ssh\_password](#ssh\_password) | Password of the SSH user | `string` | "" | no |
-| <a name="input_image_namespace"></a> [image\_namespace](#image\_namespace) | Namespace of the Harvester image to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_image_name"></a> [image\_name](#image\_name) | Name of the Harvester image to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_network_namespace"></a> [network\_namespace](#network\_namespace) | Namespace of the Harvester network to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_network_name"></a> [network\_name](#network\_name) | Name of the Harvester network to deploy the VMs into | `string` | n/a | yes |
-| <a name="input_admin_password"></a> [admin\_password](#input\_admin\_password) | Admin password to use for Rancher server bootstrap, min. 12 characters | `string` | n/a | yes |
-| <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | Version of cert-manager to install alongside Rancher (format: 0.0.0) | `string` | `"1.10.1"` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Kubernetes version to use for Rancher server cluster | `string` | `"v1.24.7+k3s1"` | no |
-| <a name="input_rancher_version"></a> [rancher\_version](#input\_rancher\_version) | Rancher server version (format: v0.0.0) | `string` | `"2.6.10"` | no |
+| Name                                                                                               | Description                                                            | Type     | Default          | Required |
+|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|----------|------------------|:--------:|
+| <a name="input_kubeconfig_path"></a> [kubeconfig\_path](#kubeconfig\_path)                         | Kubeconfig file path to connect to the Harvester cluster               | `string` | n/a              |   yes    |
+| <a name="input_kubecontext"></a> [kubecontext](#kubecontext)                                       | Name of the kubernetes context to use to the Harvester cluster         | `string` | ""               |    no    |
+| <a name="input_generated_files_dir"></a> [generated\_files\_dir](#input\_generated\_files\_dir)    | Directory where generated files will be stored                         | `string` | `"."`            |    no    |
+| <a name="input_prefix"></a> [prefix](#input\_prefix)                                               | Prefix added to names of all resources                                 | `string` | n/a              |   yes    |
+| <a name="input_cpu_count"></a> [cpu_count](#cpu\_count)                                            | CPU count of the rancher server VM                                     | `number` | 4                |    no    |
+| <a name="input_memory_size"></a> [memory_size](#memory\_size)                                      | Memory size of the rancher server VM                                   | `string` | `"8Gi"`          |    no    |
+| <a name="input_disk_size"></a> [disk_size](#disk\_size)                                            | Disk size of the rancher server VM                                     | `string` | `"20Gi"`         |    no    |
+| <a name="input_namespace"></a> [namespace](#namespace)                                             | Harvester namespace to deploy the VMs into                             | `string` | n/a              |   yes    |
+| <a name="input_ssh_username"></a> [ssh\_username](#ssh\_username)                                  | Name of the SSH user                                                   | `string` | n/a              |   yes    |
+| <a name="input_ssh_password"></a> [ssh\_password](#ssh\_password)                                  | Password of the SSH user                                               | `string` | ""               |    no    |
+| <a name="input_image_namespace"></a> [image\_namespace](#image\_namespace)                         | Namespace of the Harvester image to deploy the VMs into                | `string` | n/a              |   yes    |
+| <a name="input_image_name"></a> [image\_name](#image\_name)                                        | Name of the Harvester image to deploy the VMs into                     | `string` | n/a              |   yes    |
+| <a name="input_network_namespace"></a> [network\_namespace](#network\_namespace)                   | Namespace of the Harvester network to deploy the VMs into              | `string` | n/a              |   yes    |
+| <a name="input_network_name"></a> [network\_name](#network\_name)                                  | Name of the Harvester network to deploy the VMs into                   | `string` | n/a              |   yes    |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version)         | Kubernetes version to use for Rancher server cluster                   | `string` | `"v1.24.7+k3s1"` |    no    |
+| <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | Version of cert-manager to install alongside Rancher (format: 0.0.0)   | `string` | `"1.10.1"`       |    no    |
+| <a name="input_rancher_version"></a> [rancher\_version](#input\_rancher\_version)                  | Rancher server version (format: v0.0.0)                                | `string` | `"2.6.10"`       |    no    |
+| <a name="input_admin_password"></a> [admin\_password](#input\_admin\_password)                     | Admin password to use for Rancher server bootstrap, min. 12 characters | `string` | n/a              |   yes    |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_rancher_node_ip"></a> [rancher\_node\_ip](#output\_rancher\_node\_ip) | n/a |
-| <a name="output_rancher_server_url"></a> [rancher\_server\_url](#output\_rancher\_server\_url) | n/a |
+| Name                                                                                           | Description |
+|------------------------------------------------------------------------------------------------|-------------|
+| <a name="output_rancher_node_ip"></a> [rancher\_node\_ip](#output\_rancher\_node\_ip)          | n/a         |
+| <a name="output_rancher_server_url"></a> [rancher\_server\_url](#output\_rancher\_server\_url) | n/a         |
 <!-- END_TF_DOCS -->
